@@ -1,8 +1,16 @@
 # huruf_hijaiyah
 
-A new Flutter project.
+Ini adlah sebuah aplikasi untuk mempelajari apa saja huruf hijaiyah dan harokat dalam huruf hijaiyah seperti fathah, dhommah, dan kasroh
 
 ## Getting Started
+
+Sebelum mulai jangan lupa 
+
+flutter pub get
+
+Kemudian jika ingin build
+
+flutter build apk --release
 
 This project is a starting point for a Flutter application.
 
