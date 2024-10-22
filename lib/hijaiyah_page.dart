@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart'; // Paket untuk menggunakan font Google Fonts
 
 class Hijaiyah extends StatefulWidget {
-  const Hijaiyah({super.key});
+  const Hijaiyah({super.key}); // Constructor default dengan super key
 
   @override
-  State<Hijaiyah> createState() => _HijaiyahState();
+  State<Hijaiyah> createState() => _HijaiyahState(); // Membuat state untuk widget Hijaiyah
 }
 
 class _HijaiyahState extends State<Hijaiyah> {
+  // List yang menyimpan huruf hijaiyah dan nama dari huruf tersebut
   final List<Map<String, String>> hurufHijaiyah = [
     {'huruf': 'ا', 'nama': 'Alif'},
     {'huruf': 'ب', 'nama': "'Ba"},
@@ -43,55 +44,60 @@ class _HijaiyahState extends State<Hijaiyah> {
     {'huruf': 'ء', 'nama': 'Hamzah'},
     {'huruf': 'ي', 'nama': "'Ya"}
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Struktur dasar halaman yang memiliki AppBar dan Body
       appBar: AppBar(
-          backgroundColor: Colors.amber.shade100,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'images/hurufix.png',
-                fit: BoxFit.contain,
-                height: 40,
-              ),
-            ],
-          )),
+        backgroundColor: Colors.amber.shade100, // Warna background AppBar
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center, // Posisikan konten di tengah secara horizontal
+          children: [
+            Image.asset(
+              'images/hurufix.png', // Gambar aset lokal
+              fit: BoxFit.contain, // Menjaga rasio gambar
+              height: 40, // Tinggi gambar
+            ),
+          ],
+        ),
+      ),
       body: Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.rtl, // Mengatur arah teks dari kanan ke kiri (sesuai huruf Hijaiyah)
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0), // Padding di seluruh sisi body
           child: GridView.builder(
+            // Membuat grid yang dinamis dengan jumlah elemen sesuai dengan itemCount
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3, // Jumlah kolom dalam grid
               crossAxisSpacing: 10, // Jarak horizontal antar item
               mainAxisSpacing: 10, // Jarak vertikal antar item
             ),
-            itemCount: hurufHijaiyah.length,
+            itemCount: hurufHijaiyah.length, // Jumlah item berdasarkan panjang list hurufHijaiyah
             itemBuilder: (context, index) {
               return Container(
+                // Membungkus setiap item dalam grid dengan container
                 decoration: BoxDecoration(
-                  color: Colors.amber[50],
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.blueGrey),
+                  color: Colors.amber[50], // Warna latar belakang item
+                  borderRadius: BorderRadius.circular(10), // Membuat sudut item membulat
+                  border: Border.all(color: Colors.blueGrey), // Memberikan border dengan warna blue-grey
                 ),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center, // Menempatkan konten di tengah secara vertikal
                   children: [
                     Text(
-                      hurufHijaiyah[index]['huruf']!,
+                      hurufHijaiyah[index]['huruf']!, // Menampilkan huruf hijaiyah
                       style: GoogleFonts.robotoSlab(
-                        fontSize: 30, // Ukuran huruf hijaiyah
-                        fontWeight: FontWeight.bold,
+                        fontSize: 30, // Ukuran font huruf hijaiyah
+                        fontWeight: FontWeight.bold, // Ketebalan font huruf hijaiyah
                       ),
                     ),
-                    SizedBox(height: 10), // Jarak antara huruf dan teks nama
+                    SizedBox(height: 10), // Spasi vertikal antara huruf dan nama huruf
                     Text(
-                      hurufHijaiyah[index]['nama']!,
+                      hurufHijaiyah[index]['nama']!, // Menampilkan nama huruf hijaiyah
                       style: GoogleFonts.robotoSlab(
-                        fontSize: 16, // Ukuran nama huruf
-                        fontWeight: FontWeight.w500,
+                        fontSize: 16, // Ukuran font nama huruf
+                        fontWeight: FontWeight.w500, // Ketebalan font nama huruf
                       ),
                     ),
                   ],
