@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart'; // Paket untuk menggunakan font Google Fonts
 
 class FathahPage extends StatefulWidget {
-  const FathahPage({super.key});
+  const FathahPage({super.key}); // Constructor default dengan super key
 
   @override
-  State<FathahPage> createState() => _FathahpageState();
+  State<FathahPage> createState() => _FathahpageState(); // Membuat state untuk widget Hijaiyah
 }
 
 class _FathahpageState extends State<FathahPage> {
+  // List yang menyimpan huruf fathah dan bacaan dari huruf tersebut
   final List<Map<String, String>> hurufFathah = [
     {'huruf': 'اَ', 'bacaan': 'a'},
     {'huruf': 'بَ', 'bacaan': 'Ba'},
@@ -45,50 +46,53 @@ class _FathahpageState extends State<FathahPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Struktur dasar halaman yang memiliki AppBar dan Body
       appBar: AppBar(
-        backgroundColor: Colors.amber.shade100,
+        backgroundColor: Colors.amber.shade100,  // Warna background AppBar
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center, // Posisikan konten di tengah secara horizontal
           children: [
             Image.asset(
-              'images/fathah.png',
-              fit: BoxFit.contain,
-              height: 40,
+              'images/fathah.png', // Gambar aset lokal
+              fit: BoxFit.contain, // Menjaga rasio gambar
+              height: 40, // Tinggi gambar
             )
           ],
         ),
       ),
       body: Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.rtl, // Mengatur arah teks dari kanan ke kiri (sesuai huruf Hijaiyah)
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0), // Padding di seluruh sisi body
           child: GridView.builder(
+            // Membuat grid yang dinamis dengan jumlah elemen sesuai dengan itemCount
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3, // Jumlah kolom dalam grid
               crossAxisSpacing: 10, // Jarak horizontal antar item
               mainAxisSpacing: 10, // Jarak vertikal antar item
             ),
-            itemCount: hurufFathah.length,
+            itemCount: hurufFathah.length, // Jumlah item berdasarkan panjang list huruffathah
             itemBuilder: (context, index) {
               return Container(
+                // Membungkus setiap item dalam grid dengan container
                 decoration: BoxDecoration(
-                  color: Colors.amber.shade50,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.blueGrey),
+                  color: Colors.amber.shade50, // Warna latar belakang item
+                  borderRadius: BorderRadius.circular(10),  // Membuat sudut item membulat
+                  border: Border.all(color: Colors.blueGrey),  // Memberikan border dengan warna blue-grey
                 ),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center, // Menempatkan konten di tengah secara vertikal
                   children: [
                     Text(
-                      hurufFathah[index]['huruf']!,
+                      hurufFathah[index]['huruf']!, // Menampilkan huruf hijaiyah fathah
                       style: GoogleFonts.robotoSlab(
-                        fontSize: 30, // Ukuran huruf hijaiyah
+                        fontSize: 30, // Ukuran huruf hijaiyah fathah
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     SizedBox(height: 10), // Jarak antara huruf dan teks nama
                     Text(
-                      hurufFathah[index]['bacaan']!,
+                      hurufFathah[index]['bacaan']!, // Menampilkan bacaan huruf hijaiyah fathah
                       style: GoogleFonts.robotoSlab(
                         fontSize: 16, // Ukuran nama huruf
                         fontWeight: FontWeight.w500,
